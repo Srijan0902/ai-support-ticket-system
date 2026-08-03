@@ -3,6 +3,12 @@ import lombok.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.OneToMany;
+
+import java.util.List;
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -26,5 +32,6 @@ public class Customer {
     @NotBlank(message = "Phone number is required")
     @Column(unique = true)
     private String phone;
-
+    @OneToMany(mappedBy = "customer")
+    private List<Ticket> tickets;
 }
